@@ -7,9 +7,12 @@ import java.util.regex.*;
 public class Solution {//I think I should first convert the time to integer hours, minutes, and seconds. will be easier to compare
 
     static String timeConversion(String s) {
-        String timePM = (Short.parseShort(s.substring(0,2)) + 12) + "" + s.substring(2, s.length()-2);
-        if ((s.substring(s.lastIndexOf(':') + 3)).toUpperCase().equals("PM"))
+        short hour = Short.parseShort(s.substring(0,2));
+        String timePM = (hour + 12) + "" + s.substring(2, s.length()-2);
+        if ((s.substring(s.lastIndexOf(':') + 3)).toUpperCase().equals("PM") && hour != 12)
             return timePM;
+        else if (((s.substring(s.lastIndexOf(':') + 3)).toUpperCase().equals("AM")) && (hour == 12))
+            return "00" + s.substring(2, s.length()-2);
         else
             return s.substring(0, s.length()-2);
     }
