@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {//I think I should first convert the time to integer hours, minutes, and seconds. will be easier to compare
+
+    static String timeConversion(String s) {
+        String timePM = (Short.parseShort(s.substring(0,2)) + 12) + "" + s.substring(2, s.length()-2);
+        if ((s.substring(s.lastIndexOf(':') + 3)).toUpperCase().equals("PM"))
+            return timePM;
+        else
+            return s.substring(0, s.length()-2);
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.next();
+        String result = timeConversion(s);
+        System.out.println(result);
+    }
+}
