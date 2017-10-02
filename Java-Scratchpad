@@ -1,0 +1,6 @@
+//Repeating character for Java
+String.format("%0" + numberOfChars + "d", 0).replace("0", substituteString);
+
+//Limit number of chracters
+String.format("%" + numberOfSpaces + "s", "");
+
