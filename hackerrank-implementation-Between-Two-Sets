@@ -1,0 +1,55 @@
+//https://www.hackerrank.com/challenges/between-two-sets/problem
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static int getTotalX(int[] a, int[] b) {
+        // Complete this function
+        Arrays.sort(b);
+        Arrays.sort(a);
+        Set<Integer> hash = new HashSet<Integer>();
+        for (int i = 1; i <= b[b.length]; i++){
+            int j = 0;
+            boolean both = true;
+            while ((j < b.length) && (both == true)){
+                int k = 0;
+                if (b[j]%i==0){
+                    while ((k < a.length) && (both == true)){
+                        if (i%a[k]!=0)
+                            both=false;
+                        k++;
+                    }
+                }
+                else
+                    both = false;
+                j++;
+            }
+            if (both == true)
+                hash.add(i);
+        }
+        Integer[] groups = hash.toArray(new Integer[hash.size()]);
+        return groups;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int[] a = new int[n];
+        for(int a_i = 0; a_i < n; a_i++){
+            a[a_i] = in.nextInt();
+        }
+        int[] b = new int[m];
+        for(int b_i = 0; b_i < m; b_i++){
+            b[b_i] = in.nextInt();
+        }
+        int total = getTotalX(a, b);
+        System.out.println(total);
+        in.close();
+    }
+}
