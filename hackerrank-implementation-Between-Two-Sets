@@ -1,4 +1,5 @@
 //https://www.hackerrank.com/challenges/between-two-sets/problem
+// Note: read the required output more carefully
 
 import java.io.*;
 import java.util.*;
@@ -12,13 +13,13 @@ public class Solution {
         // Complete this function
         Arrays.sort(b);
         Arrays.sort(a);
-        Set<Integer> hash = new HashSet<Integer>();
-        for (int i = 1; i <= b[b.length]; i++){
+        int count = 0;
+        for (int i = a[a.length-1]; i <= b[b.length-1]; i++){
             int j = 0;
             boolean both = true;
             while ((j < b.length) && (both == true)){
-                int k = 0;
                 if (b[j]%i==0){
+                    int k = 0;
                     while ((k < a.length) && (both == true)){
                         if (i%a[k]!=0)
                             both=false;
@@ -29,11 +30,11 @@ public class Solution {
                     both = false;
                 j++;
             }
-            if (both == true)
-                hash.add(i);
+            if (both == true){
+                count++;
+            }
         }
-        Integer[] groups = hash.toArray(new Integer[hash.size()]);
-        return groups;
+        return count;
     }
 
     public static void main(String[] args) {
@@ -53,3 +54,4 @@ public class Solution {
         in.close();
     }
 }
+
