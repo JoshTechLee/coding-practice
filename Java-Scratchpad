@@ -29,3 +29,7 @@ String.format("%0" + numberOfChars + "d", 0).replace("0", substituteString);
 //Limit number of chracters
 String.format("%" + numberOfSpaces + "s", "");
 
+//BigInteger
+BigInteger num = BigInteger.valueOf(1);
+num = num.multiply(BigInteger.valueOf(2));  // must reassign like regular primitive number
+String s = num.toString();
