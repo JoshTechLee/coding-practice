@@ -1,0 +1,13 @@
+// https://leetcode.com/problems/palindrome-number/description/
+
+class Solution {
+    public boolean isPalindrome(int x) {
+        if (x < 0) return false;
+        long positive = x < 0 ? ((-1)*(long)x) : (long)x;
+        String reverse = new StringBuilder(Long.toString(positive)).reverse().toString();
+    
+        if (Math.abs(positive) == Long.parseLong(reverse))
+            return true;    
+        return false;
+    }
+}
