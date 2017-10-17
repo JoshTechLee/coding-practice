@@ -1,0 +1,16 @@
+// https://leetcode.com/problems/reverse-integer/discuss/
+
+class Solution {
+    public int reverse(int x) {
+        int negative = (x < 0) ? -1 : 1;
+        String number = (x < 0) ? Integer.toString(x).substring(1) : Integer.toString(x);
+        String result = "";
+        for (char digit:number.toCharArray())
+            result = Character.toString(digit) + result;
+        try{
+            return (Integer.parseInt(result))*negative;
+        } catch(NumberFormatException ex){
+            return 0;
+        }
+    }
+}
