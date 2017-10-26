@@ -1,0 +1,37 @@
+https://www.hackerrank.com/challenges/balanced-brackets/problem
+
+#!/bin/python3
+
+import sys
+
+def isBalanced(s):
+    stack = []
+    opened = ['{', '(', '[']
+    closed = ['}', ')', ']']
+    for each in s:
+        if each in opened:
+            stack.append(each)
+        elif each in closed:
+            if len(stack) != 0:
+                if stack[-1] == "{" and each == "}":
+                    stack.pop()
+                elif stack[-1] == "(" and each == ")":
+                    stack.pop()
+                elif stack[-1] == "[" and each == "]":
+                    stack.pop()
+                else:
+                    return "NO"
+            else:
+                return "NO"
+    if len(stack) == 0:
+        return "YES"
+    else:
+        return "NO"                
+            
+
+if __name__ == "__main__":
+    t = int(input().strip())
+    for a0 in range(t):
+        s = input().strip()
+        result = isBalanced(s)
+        print (result)
