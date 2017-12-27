@@ -1,0 +1,27 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+'''
+class Node:
+      def __init__(self,info): 
+          self.info = info  
+          self.left = None  
+          self.right = None 
+           
+
+       // this is a node of the tree , which contains info as data, left , right
+'''
+def height(root):
+    return levels(root, 0)
+
+def levels(root, num):
+    left = 0
+    right = 0
+    if root.left != None:
+        left = levels(root.right, num + 1)
+    if root.right != None:
+        right = levels(root.right, num + 1)
+    if root.left == None and root.right == None:
+        return num
+    elif left >= right:   # stupid hackerrank doesn't have conditional "?" notation (return (left >= right) ? left : right)
+        return left
+    else:
+        return right
